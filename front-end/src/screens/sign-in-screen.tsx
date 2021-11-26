@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router";
 import { ScreenContainer } from ".";
-import { useAuth } from "../aws/auth";
 import { Button, Input, Text } from "../components";
+import { AuthContext } from "../provider/authContext";
 
 export const SignIn = () => {
-  const { signIn } = useAuth();
+  const { signIn } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigate();

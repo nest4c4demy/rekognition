@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router";
 import { ScreenContainer } from ".";
-import { useAuth } from "../aws/auth";
+import { AuthContext } from "../provider/authContext";
 import { Button, Input, Text, FileInput } from "../components";
 
 export const SignUp = () => {
@@ -14,7 +14,7 @@ export const SignUp = () => {
 };
 
 const GetEmailAndPassword = ({ setCheckCode }: { setCheckCode: any }) => {
-  const { signUp } = useAuth();
+  const { signUp } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [selectedFile, setSelectedFile] = useState(undefined);
@@ -75,13 +75,13 @@ const GetEmailAndPassword = ({ setCheckCode }: { setCheckCode: any }) => {
 };
 
 const CheckVerificationCode = () => {
-  const { verify } = useAuth();
+  const { verifyUser } = useContext(AuthContext);
   const [code, setCode] = useState("");
   const navigation = useNavigate();
 
   const check = async () => {
     try {
-      await verify({ code });
+      await verifyUser({ code });
       navigation("/");
     } catch (err) {
       alert(err);

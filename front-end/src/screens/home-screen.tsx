@@ -1,16 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ScreenContainer } from ".";
-import { useAuth } from "../aws/auth";
 import { Button, FileInput, Text } from "../components";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as SearcgIcon } from "../assets/searchIcon.svg";
 import { Loader } from "../components/loader";
+import { AuthContext } from "../provider/authContext";
 
 export const HomeScreen = () => {
-  const { userData }: any = useAuth();
+  const { user }: any = useContext(AuthContext);
   const navigation = useNavigate();
 
-  return userData ? (
+  return user ? (
     <ScreenContainer justifyContent="justify-between" className="flex-col">
       <Header />
       <Content />
@@ -61,11 +61,11 @@ const Content = () => {
 };
 
 const Header = () => {
-  const { userData, logout }: any = useAuth();
+  const { user, logout }: any = useContext(AuthContext);
 
   return (
     <div className="flex h-6-vh align-center w-80-vw justify-between mt-10">
-      <Text fontSize="32">{`user : ${userData.username}`}</Text>
+      <Text fontSize="32">{`user : ${user.username}`}</Text>
       <Button className="pv-14 ph-30" onClick={logout}>
         <Text fontSize="24">Log out</Text>
       </Button>
