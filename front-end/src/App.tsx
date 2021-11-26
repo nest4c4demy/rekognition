@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { HomeScreen, SignIn, SignUp } from "./screens";
+import { HomeScreen, ImageList, SignIn, SignUp } from "./screens";
 
 export default function App() {
   return (
@@ -7,6 +7,7 @@ export default function App() {
       <Route path="/" element={<HomeScreen />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/signin" element={<SignIn />} />
+      <Route path="/imagelist" element={<ImageList />} />
     </Routes>
   );
 }
