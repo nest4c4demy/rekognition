@@ -51,6 +51,17 @@ input[type="file"] {
     border-radius: 10px;
 }
 
+.image-no-radius {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 12px;
+}
+
 // ----------------------------- Text --------------------------------------- //
 .text {
     padding: 0;
