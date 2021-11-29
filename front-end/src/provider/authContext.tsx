@@ -7,8 +7,8 @@ import {
 
 //
 const poolData = {
-  UserPoolId: "us-east-1_KS2lF8b8a", // Your user pool id here
-  ClientId: "7na44b7gd5q0q5fg65k37bm6hc", // Your client id here
+  UserPoolId: "", // Your user pool id here
+  ClientId: "", // Your client id here
 };
 const userPool: any = new CognitoUserPool(poolData);
 
@@ -80,6 +80,7 @@ export const AuthProvider = ({ children }: any) => {
       onSuccess: (result) => {
         const tk = result.getIdToken().getJwtToken();
         setToken(tk);
+        console.log(tk);
 
         return tk;
       },

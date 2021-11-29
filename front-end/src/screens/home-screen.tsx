@@ -1,14 +1,24 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ScreenContainer } from ".";
 import { Button, FileInput, Text } from "../components";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as SearcgIcon } from "../assets/searchIcon.svg";
 import { Loader } from "../components/loader";
 import { AuthContext } from "../provider/authContext";
+import { getData } from "../aws/getAttendences";
 
 export const HomeScreen = () => {
   const { user }: any = useContext(AuthContext);
   const navigation = useNavigate();
+
+  const getAttendences = async () => {
+    const res = await getData();
+    console.log(res);
+  };
+
+  useEffect(() => {
+    getAttendences();
+  }, []);
 
   return user ? (
     <ScreenContainer justifyContent="justify-between" className="flex-col">
